@@ -1,0 +1,23 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build Backend service
+      run: docker build -t receipt-backend ./backend
+    
+    - name: Build Frontend service  
+      run: docker build -t receipt-frontend ./frontend
+    
+    - name: Test containers
+      run: |
+        docker run --rm receipt-backend python -c "import app; print('Backend service OK')"
+        docker run --rm receipt-frontend python -c "import streamlit; print('Frontend service OK')"

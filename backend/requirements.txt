@@ -1,0 +1,14 @@
+opencv-python-headless
+imutils
+scipy
+pytesseract
+fastapi
+uvicorn
+python-multipart
+pytest
+numpy
+httpx
+pydantic
+openai
+databases
+asyncpg
